@@ -3,7 +3,7 @@ function sum(a, b) {
     if (typeof (a) === "number" && typeof (b) === "number"){
         return a+b;
     }
-    throw new TypeError("cda or b is not number");
+    throw new TypeError("One of the parameters is not a number");
 }
 
 module.exports = sum;
