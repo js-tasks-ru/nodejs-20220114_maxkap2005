@@ -41,13 +41,18 @@ server.on('request',  (req, res) => {
         console.log("ERROR limitedStream:" + err.code);
         res.statusCode = 413;
         res.end("File too large.");
-        return;
       }
       else{
         res.statusCode = 500;
         res.end("Bad data.");
       }
-      limitedStream.end();
+      fs.unlink(filepath, function(err){
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Aborted - file deleted.");
+        }
+      });
       return;
     });
 
@@ -62,6 +67,8 @@ server.on('request',  (req, res) => {
         res.statusCode = 500;
         res.end("Error! We will fix it.");
       }
+
+
       outStream.end();
     });
 
