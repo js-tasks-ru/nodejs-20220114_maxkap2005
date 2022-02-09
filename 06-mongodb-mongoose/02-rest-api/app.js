@@ -12,22 +12,6 @@ app.use(async (ctx, next) => {
     await next();
   } catch (err) {
 
-    console.log(err);
-
-    if (err.name === 'ValidationError') {
-
-      ctx.status = 400;
-
-      ctx.body = Object.keys(err.errors).reduce((acc, field) => {
-        return {
-          ...acc,
-          [field]: err.errors[field].message,
-        };
-      }, {});
-    }
-    else {
-
-
       if (err.status) {
         ctx.status = err.status;
         ctx.body = {error: err.message};
@@ -37,7 +21,7 @@ app.use(async (ctx, next) => {
         ctx.body = {error: 'Internal server error'};
       }
     }
-  }
+
 });
 
 
