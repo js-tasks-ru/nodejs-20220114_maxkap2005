@@ -3,3 +3,6 @@
 node_modules
 package-lock.json
 yarn.lock
+07-authentication/02-oauth/.env
+07-authentication/03-sessions/.env
+08-email/01-registration/.env
