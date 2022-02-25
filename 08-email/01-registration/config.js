@@ -1,3 +1,4 @@
+require('dotenv').config();
 module.exports = {
   mongodb: {
     uri: (process.env.NODE_ENV === 'test') ?
@@ -36,7 +37,7 @@ module.exports = {
     },
   },
   mailer: {
-    user: '',
-    password: '',
+    user: process.env.GMAIL_LOGIN || '',
+    password: process.env.GMAIL_PASSWORD || '',
   },
 };
